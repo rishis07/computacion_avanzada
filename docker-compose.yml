@@ -1,0 +1,17 @@
+services:
+    web:
+        image: comp_ava
+        depends_on:
+            - db
+        ports:
+            8000:8000
+        volumes:
+            -$(pwd):/opt/app
+    db:
+        image: mongo
+        expose:
+            - "27017"
+        volumes:
+            - mongodata:/data/db
+    volumes:
+        mongodata:
