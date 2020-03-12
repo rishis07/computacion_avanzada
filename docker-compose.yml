@@ -1,11 +1,13 @@
 version: '3.6'
 services:
     web:
+        container_name: web_app
+        restart: always
         image: comp_ava
         depends_on:
             - db
         ports:
-            - 8000:8000
+            - "8000:8000"
         volumes:
             - .:/opt/app
     db:
@@ -14,7 +16,7 @@ services:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: password
         ports:
-            - 27017:27017
+            - "27017:27017"
         volumes:
             - mongodata:/data/db
     
